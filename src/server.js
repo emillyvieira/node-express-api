@@ -1,16 +1,54 @@
 //const express = require('express')
 import express from 'express'
+import {PORT, HOST} from './config.js'
+import { users } from './db-memory/user.js'
+// import qualquer from '.config.js'
+
 const app = express()
-const port = 3000
+
+app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.json({message: "Olá Mundo!"})
+    res.json({message: "Bem vindo a API!"})
 })
 
-app.get('/produto', (req, res) => {
-    res.json({message: "Rota de Produto!"})
+app.get('/user', (req, res) => {
+    res.json({
+        success: "Usuários listados com sucesso!",
+        users
+    })
 })
 
-app.listen(port, () => {
-    console.log(`Servidor rodando na porta http://localhost:${port}`)
+app.post('/user', (req, res) => {
+    const user = req.body
+    user.id = users[users.length - 1].id + 1
+    users.push(user)
+    res.json({
+        success: "Usuários listados com sucesso!",
+        users
+    })
+})
+
+app.put('/user', (req, res) => {
+    const user = req.body
+    user.id = users[users.length - 1].id + 1
+    users.push(user)
+    res.json({
+        success: "Usuários listados com sucesso!",
+        users
+    })
+})
+
+app.delete('/user', (req, res) => {
+    const user = req.body
+    user.id = users[users.length - 1].id + 1
+    users.push(user)
+    res.json({
+        success: "Usuários listados com sucesso!",
+        users
+    })
+})
+
+app.listen(PORT, () => {
+    console.log(`Servidor rodando em ${HOST}:${PORT}`)
 })
