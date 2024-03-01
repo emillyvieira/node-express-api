@@ -1,4 +1,4 @@
-import userModel from '../../db-memory/userModel.js'
+import userModel from '../../models/usermodel.js'
 
 const create = (req, res) => {
     const user = req.body

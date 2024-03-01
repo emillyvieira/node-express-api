@@ -1,12 +1,11 @@
-import { products } from '../../db-memory/products.js'
+import productModel from "../../models/productModel.js"
 
 const create = (req, res) => {
     const product = req.body
-    product.id = products[products.length - 1].id + 1
-    products.push(product)
+    const result = productModel.create()
     res.json({
         success: "Produto adicionado com sucesso!",
-        products
+        products: result
     })
 }
 

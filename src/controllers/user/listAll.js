@@ -1,4 +1,4 @@
-import {list} from '../models/userModel.js'
+import userModel from '../../models/usermodel.js'
 
 const listAll = (req, res) => {
     res.json({

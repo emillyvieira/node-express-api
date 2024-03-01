@@ -18,7 +18,7 @@ const edit = () => {
                 name: newUser.name || user.name,
                 email: newUser.email || user.email,
                 avatar: newUser.avatar || user.avatar
-            }
+            } 
         }
         return user
     })

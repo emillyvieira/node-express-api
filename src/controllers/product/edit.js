@@ -1,21 +1,11 @@
-import { products } from '../../db-memory/products.js'
+import productModel from "../../models/productModel.js"
 
 const edit = (req, res) => {
     const newproduct = req.body
-    const productsResult = products.map(product => {
-        if (product.id === newproduct.id) {
-            return {
-                id: product.id,
-                name: newproduct.name || product.name,
-                email: newproduct.email || product.email,
-                avatar: newproduct.avatar || product.avatar
-            }
-        }
-        return product
-    })
+    const productsResult = productModel.edit()
 
     res.json({
-        success: `Produto ${newproduct.id} atualizado com sucesso!`,
+        success: `Produto ${newProduct.id} atualizado com sucesso!`,
         productsResult
     })
 }
