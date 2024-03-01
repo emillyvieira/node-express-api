@@ -1,4 +1,17 @@
 import { users } from '../db-memory/user.js'
+import {z} from 'zod'
+
+const userSchema = z.object({
+    id: z.number(),
+    name: z.string().min(3).max(200),
+    email: z.string.email(),
+    avatar: z.string().url()
+})
+
+const validateCreate = (user) => {
+    const partialUserSchema = userSchema.partial({id: true})
+    return partialUserSchema.safeParse(user)
+}
 
 const list = () => {
     return users
@@ -28,4 +41,4 @@ const remove = (id) => {
     return users.filter(user => user.id !== id)
 }
 
-export default {list, create, edit, remove}
+export default {list, create, edit, remove, validateCreate}
