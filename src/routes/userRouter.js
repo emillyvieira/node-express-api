@@ -19,4 +19,4 @@ router.post('/', create)
 router.delete('/', remove)
 router.put('/', edit)
 
-export default router
+export default router 
