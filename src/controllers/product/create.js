@@ -6,8 +6,6 @@ const create = (req, res) => {
     res.json({
         success: "Produto adicionado com sucesso!",
         products: result
-    
-    
     })
 }
 
