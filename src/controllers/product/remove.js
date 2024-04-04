@@ -5,7 +5,7 @@ const remove = (req, res) => {
     const productsResult = productModel.remove()
     res.json({
         success: `Produto ${id} removido com sucesso!`,
-        productsResult
+        products: productsResult
     })
 }
 

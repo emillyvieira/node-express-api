@@ -1,16 +1,16 @@
-import { products } from '../db-memory/products.js'
+import {products} from '../db-memory/products.js'
 
 const list = () => {
     return products
 }
 
-const create = (product) => {
+const create = (product) =>{
     product.id = products[products.length - 1].id + 1
-    products.push(product)
-    return product
+	products.push(product)
+    return products
 }
 
-const edit = () => {
+const edit = (newProduct) => {
     return products.map(product => {
 		if (product.id === newProduct.id) {
 			return {
@@ -22,11 +22,11 @@ const edit = () => {
 			}
 		}
 		return product
-    })
+	})
 }
 
 const remove = (id) => {
-   return products.filter(product => product.id !== id)
+    return products.filter(product => product.id !== id)
 }
 
-export default { list, create, edit, remove }
+export default {list, create, edit, remove} 
